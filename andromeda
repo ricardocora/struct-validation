@@ -1,0 +1,358 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define TAM 100
+
+int main(){
+
+    printf("\a\n\n\t|| PLATAFORMA INTEGRADA ANDROMEDA M31 V0.1b ||\n");
+
+    char menup, sairmenu;
+
+    struct TPessoa {
+        int codigo;
+        char nome[255];
+        char genero;
+        int idade;
+        float altura;
+        float peso;
+    };
+
+    struct TPessoa cadastro[TAM];
+
+    int i, ncadastro, cod, menualt;
+
+        do {
+            printf("\n\tQUANTIDADE DE CADASTROS (1 A 3)? ");
+            scanf(" %d", &ncadastro);
+
+            if (ncadastro < 1 || ncadastro > 3)
+                printf("\tVALOR INVALIDO. DIGITE NOVAMENTE\n");
+
+        } while (ncadastro < 1 || ncadastro > 3);
+
+    for (i=0; i<ncadastro; i++){
+
+        printf("\n\t>> INSERIR NOVO CADASTRO\n\n");
+
+        do {
+            printf("\tCODIGO (1000 A 1999): ");
+            scanf(" %d", &cadastro[i].codigo);
+
+            if (cadastro[i].codigo < 1000 || cadastro[i].codigo > 1999)
+                printf("\tVALOR FORA DO INTERVALO. DIGITE NOVAMENTE\n\n");
+
+        } while (cadastro[i].codigo < 1000 || cadastro[i].codigo > 1999);
+
+        printf("\tNOME COMPLETO: ");
+        fflush(stdin);
+        fgets(cadastro[i].nome, sizeof(cadastro[i].nome), stdin);
+
+        do {
+            printf("\tGENERO (M=MASCULINO F=FEMININO): ");
+            scanf(" %c", &cadastro[i].genero);
+            cadastro[i].genero = toupper(cadastro[i].genero);
+
+            if (cadastro[i].genero !='M' && cadastro[i].genero !='F')
+                printf("\tOPCAO INVALIDA. TENTE NOVAMENTE\n\n");
+
+        } while (cadastro[i].genero !='M' && cadastro[i].genero !='F');
+
+        do {
+            printf("\tIDADE (1 A 120): ");
+            scanf(" %d", &cadastro[i].idade);
+
+            if (cadastro[i].idade < 1 || cadastro[i].idade > 120)
+                printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n\n");
+
+        } while (cadastro[i].idade < 1 || cadastro[i].idade > 120);
+
+        do {
+
+            printf("\tALTURA (0.3 A 2.50 METROS): ");
+            scanf(" %f", &cadastro[i].altura);
+
+            if (cadastro[i].altura < 0.3 || cadastro[i].altura > 2.50)
+                printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n\n");
+
+        } while (cadastro[i].altura < 0.3 || cadastro[i].altura > 2.50);
+
+        do {
+            printf("\tPESO (10 A 300 Kg): ");
+            scanf(" %f", &cadastro[i].peso);
+
+            if (cadastro[i].peso < 10 || cadastro[i].peso > 300)
+                printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n\n");
+
+        } while (cadastro[i].peso < 10 || cadastro[i].peso > 300);
+
+    }
+
+    while (1){
+    printf("\n\t>> MENU DE OPCOES\n");
+    printf("\n\t| A | NOVO CADASTRO");
+    printf("\n\t| B | ALTERAR CADASTRO");
+    printf("\n\t| C | EXCLUIR CADASTRO");
+    printf("\n\t| D | MOSTRAR CADASTRO");
+    printf("\n\t| E | MOSTRAR TODOS CADASTROS");
+    printf("\n\t| S | SAIR DO SISTEMA");
+    printf("\n\n\t>> ");
+    scanf(" %c", &menup);
+    menup = toupper(menup);
+
+    switch (menup){
+
+    case 'A':
+
+        for (i=ncadastro; i<ncadastro+1; i++){
+
+        printf("\n\t>> INSERIR NOVO CADASTRO\n\n");
+
+        do {
+            printf("\tCODIGO (1000 A 1999): ");
+            scanf(" %d", &cadastro[i].codigo);
+
+            if (cadastro[i].codigo < 1000 || cadastro[i].codigo > 1999)
+                printf("\tVALOR FORA DO INTERVALO. DIGITE NOVAMENTE\n\n");
+
+        } while (cadastro[i].codigo < 1000 || cadastro[i].codigo > 1999);
+
+        printf("\tNOME COMPLETO: ");
+        fflush(stdin);
+        fgets(cadastro[i].nome, sizeof(cadastro[i].nome), stdin);
+
+        do {
+            printf("\tGENERO (M=MASCULINO F=FEMININO): ");
+            scanf(" %c", &cadastro[i].genero);
+            cadastro[i].genero = toupper(cadastro[i].genero);
+
+            if (cadastro[i].genero !='M' && cadastro[i].genero !='F')
+                printf("\tOPCAO INVALIDA. TENTE NOVAMENTE\n\n");
+
+        } while (cadastro[i].genero !='M' && cadastro[i].genero !='F');
+
+        do {
+            printf("\tIDADE (1 A 120): ");
+            scanf(" %d", &cadastro[i].idade);
+
+            if (cadastro[i].idade < 1 || cadastro[i].idade > 120)
+                printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n\n");
+
+        } while (cadastro[i].idade < 1 || cadastro[i].idade > 120);
+
+        do {
+
+            printf("\tALTURA (0.3 A 2.50 METROS): ");
+            scanf(" %f", &cadastro[i].altura);
+
+            if (cadastro[i].altura < 0.3 || cadastro[i].altura > 2.50)
+                printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n\n");
+
+        } while (cadastro[i].altura < 0.3 || cadastro[i].altura > 2.50);
+
+        do {
+            printf("\tPESO (10 A 300 Kg): ");
+            scanf(" %f", &cadastro[i].peso);
+
+            if (cadastro[i].peso < 10 || cadastro[i].peso > 300)
+                printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n\n");
+
+        } while (cadastro[i].peso < 10 || cadastro[i].peso > 300);
+
+        }
+        break;
+
+    case 'B':
+
+        printf("\n\t>> SUBMENU ALTERAR\n");
+        printf("\n\tINFORME O CODIGO DO CADASTRO: ");
+        scanf(" %d", &cod);
+
+        do {
+            printf("\n\t| 1 | ALTERAR CODIGO DO CADASTRO");
+            printf("\n\t| 2 | ALTERAR NOME DO CADASTRO");
+            printf("\n\t| 3 | ALTERAR GENERO DO CADASTRO");
+            printf("\n\t| 4 | ALTERAR IDADE DO CADASTRO");
+            printf("\n\t| 5 | ALTERAR ALTURA DO CADASTRO");
+            printf("\n\t| 6 | ALTERAR PESO DO CADASTRO");
+            printf("\n\t| 9 | VOLTAR AO MENU PRINCIPAL");
+            printf("\n\n\t>> ");
+            scanf(" %d", &menualt);
+
+            switch (menualt){
+
+            case 1:
+                for (i=0; i<ncadastro; i++){
+                    if (cadastro[i].codigo == cod){
+
+                        do {
+                            printf("\n\tINSIRA O NOVO CODIGO: ");
+                            scanf (" %d", &cadastro[i].codigo);
+
+                            if (cadastro[i].codigo < 1000 || cadastro[i].codigo > 1999)
+                            printf("\tVALOR FORA DO INTERVALO. DIGITE NOVAMENTE\n");
+
+                        } while (cadastro[i].codigo < 1000 || cadastro[i].codigo > 1999);
+                    }
+                    cod = cadastro[i].codigo;
+                    printf("\n\tCODIGO ALTERADO COM SUCESSO\n");
+                }
+                break;
+
+            case 2:
+                for (i=0; i<ncadastro; i++){
+                    if (cadastro[i].codigo == cod){
+                        printf("\n\tINSIRA O NOVO NOME: ");
+                        fflush(stdin);
+                        fgets(cadastro[i].nome, sizeof(cadastro[i].nome), stdin);
+                    }
+                }
+                break;
+
+            case 3:
+                for (i=0; i<ncadastro; i++){
+                    if (cadastro[i].codigo == cod){
+
+                        do {
+                        printf("\n\tINSIRA O NOVO GENERO (M=MASCULINO F=FEMININO): ");
+                        scanf(" %c", &cadastro[i].genero);
+                        cadastro[i].genero = toupper(cadastro[i].genero);
+
+                        if (cadastro[i].genero !='M' && cadastro[i].genero !='F')
+                        printf("\tOPCAO INVALIDA. TENTE NOVAMENTE\n");
+
+                        } while (cadastro[i].genero !='M' && cadastro[i].genero !='F');
+                    }
+                    printf("\n\tGENERO ALTERADO COM SUCESSO\n");
+                }
+                break;
+
+            case 4:
+                for (i=0; i<ncadastro; i++){
+                    if (cadastro[i].codigo == cod){
+
+                        do {
+                        printf("\n\tINSIRA A NOVA IDADE (1 A 120): ");
+                        scanf(" %d", &cadastro[i].idade);
+
+                        if (cadastro[i].idade < 1 || cadastro[i].idade > 120)
+                        printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n");
+
+                        } while (cadastro[i].idade < 1 || cadastro[i].idade > 120);
+
+                    printf("\n\tIDADE ALTERADA COM SUCESSO\n");
+                    }
+                }
+                break;
+
+            case 5:
+                for (i=0; i<ncadastro; i++){
+                    if (cadastro[i].codigo == cod){
+
+                        do {
+                        printf("\n\tINSIRA A NOVA ALTURA (0.3 A 2.50 METROS): ");
+                        scanf(" %f", &cadastro[i].altura);
+
+                        if (cadastro[i].altura < 0.3 || cadastro[i].altura > 2.50)
+                        printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n");
+
+                        } while (cadastro[i].altura < 0.3 || cadastro[i].altura > 2.50);
+
+                    printf("\n\tALTURA ALTERADA COM SUCESSO\n");
+                    }
+                }
+                break;
+
+            case 6:
+                for (i=0; i<ncadastro; i++){
+                    if (cadastro[i].codigo == cod){
+
+                        do {
+                        printf("\n\tINSIRA O NOVO PESO (10 A 300 Kg): ");
+                        scanf(" %f", &cadastro[i].peso);
+
+                        if (cadastro[i].peso < 10 || cadastro[i].peso > 300)
+                        printf("\tVALOR FORA DO INTERVALO. TENTE NOVAMENTE\n");
+
+                        } while (cadastro[i].peso < 10 || cadastro[i].peso > 300);
+
+                    printf("\n\tPESO ALTERADO COM SUCESSO\n");
+                    }
+                }
+                break;
+
+            default:
+                printf("\n\tOPCAO INVALIDA. TENTE NOVAMENTE\n");
+
+            }
+
+        } while (menualt != 9);
+        break;
+
+    case 'C':
+
+        printf("\n\t>> EXCLUIR CADASTRO\n");
+        printf("\n\tINFORME O CODIGO DO CADASTRO: ");
+        scanf(" %d", &cod);
+
+        for (i=0; i<ncadastro; i++){
+            if (cadastro[i].codigo == cod){
+                cadastro[i].codigo = '\0';
+                strcpy (cadastro[i].nome, " ");
+                cadastro[i].genero = '\0';
+                cadastro[i].idade = '\0';
+                cadastro[i].altura = '\0';
+                cadastro[i].peso = '\0';
+                printf("\n\tCADASTRO EXLCUIDO COM SUCESSO\n");
+            }
+        }
+        break;
+
+    case 'D':
+
+        printf("\n\t>> MOSTRAR CADASTRO\n");
+        printf("\n\tINFORME O CODIGO DO CADASTRO: ");
+        scanf(" %d", &cod);
+
+        for (i=0; i<ncadastro; i++){
+            if (cadastro[i].codigo == cod){
+                printf("\n\tNOME: %s", cadastro[i].nome);
+                printf("\tGENERO: %c", cadastro[i].genero);
+                printf("\n\tIDADE: %d ANO(S)", cadastro[i].idade);
+                printf("\n\tALTURA: %.2f METRO(S)", cadastro[i].altura);
+                printf("\n\tPESO: %.1f KILO(S)", cadastro[i].peso);
+                printf("\n");
+            }
+        }
+        break;
+
+    case 'E':
+
+        printf("\n\t>> CADASTROS NO SISTEMA\n");
+
+        for (i=0; i<ncadastro; i++){
+            printf("\n\tCODIGO: %d", cadastro[i].codigo);
+            printf("\n\tNOME: %s", cadastro[i].nome);
+            printf("\tGENERO: %c", cadastro[i].genero);
+            printf("\n\tIDADE: %d ANO(S)", cadastro[i].idade);
+            printf("\n\tALTURA: %.2f METRO(S)", cadastro[i].altura);
+            printf("\n\tPESO: %.1f KG", cadastro[i].peso);
+            printf("\n\n");
+        }
+        break;
+
+    case 'S':
+        printf("\n\tOBRIGADO POR USAR O SISTEMA");
+        printf("\n\n");
+        return 0;
+        break;
+
+    default:
+        printf("\n\tOPCAO INVALIDA. TENTE NOVAMENTE\n");
+    }
+
+    }
+
+return 0;
+}
